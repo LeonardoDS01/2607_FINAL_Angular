@@ -1,0 +1,30 @@
+<div class="container mt-5">
+    <h2 class="mb-4">Mantenimiento de Órdenes</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Número de Orden</th>
+                <th>Cliente</th>
+                <th>Mesero</th>
+                <th>Total</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let orden of ordenes">
+                <td>{{ orden.numeroOrden }}</td>
+                <td>{{ orden.cliente.nombre }}</td>
+                <td>{{ orden.mesero.nombre }}</td>
+                <td>{{ orden.total | currency }}</td>
+                <td>{{ orden.estado }}</td>
+                <td>
+                    <button class="btn btn-sm btn-primary mr-2"
+                        [routerLink]="['/ordenes', orden._id, 'editar']">Editar</button>
+                    <button class="btn btn-sm btn-danger" (click)="eliminarOrden(orden._id)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success" [routerLink]="['/ordenes', 'nueva']">Crear Nueva Orden</button>
+</div>

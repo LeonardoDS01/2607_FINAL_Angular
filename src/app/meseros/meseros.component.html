@@ -1,0 +1,28 @@
+<div class="container mt-5">
+    <h2 class="mb-4">Mantenimiento de Meseros</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>DNI</th>
+                <th>Teléfono</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let mesero of meseros">
+                <td>{{ mesero.nombre }}</td>
+                <td>{{ mesero.apellido }}</td>
+                <td>{{ mesero.dni }}</td>
+                <td>{{ mesero.telefono }}</td>
+                <td>
+                    <button class="btn btn-sm btn-primary mr-2"
+                        [routerLink]="['/meseros', mesero._id, 'editar']">Editar</button>
+                    <button class="btn btn-sm btn-danger" (click)="eliminarMesero(mesero._id)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success" [routerLink]="['/meseros', 'nuevo']">Agregar Mesero</button>
+</div>
